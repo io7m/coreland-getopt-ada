@@ -1,0 +1,4 @@
+
+-- ./getopt.apk
+pragma source_file_name(getopt, spec_file_name => "getopt.ads");
+pragma source_file_name(getopt, body_file_name => "getopt.adb");
