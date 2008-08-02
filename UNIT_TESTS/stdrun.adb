@@ -10,7 +10,6 @@ procedure stdrun is
 
   char: integer;
   optchar: character;
-  remain: natural;
 begin
   -- print raw command line
   io.put (cmdline.command_name & " ");
@@ -45,9 +44,7 @@ begin
     end;
   end loop;
 
-  getopt.remaining (remain);
-
-  io.put_line ("-- remaining (" & natural'image (remain) & " )");
+  io.put_line ("-- remaining (" & natural'image (getopt.remaining) & " )");
   for index in getopt.optind .. cmdline.argument_count loop
     io.put_line ("arg " & integer'image (index) & ": " & cmdline.argument (index));
   end loop;

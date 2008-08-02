@@ -1,6 +1,6 @@
 package getopt is
   function process (options: string) return integer;
-  procedure remaining (remain: out natural);
+  function remaining return natural;
 
   function optarg return string;
   function optind return positive;

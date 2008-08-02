@@ -125,9 +125,9 @@ package body getopt is
   end process;
 
   -- remaining args
-  procedure remaining (remain: out natural) is
+  function remaining return natural is
   begin
-    remain := cmdline.argument_count - (getopt.optind - 1);
+    return cmdline.argument_count - (getopt.optind - 1);
   end remaining;
 
 begin
