@@ -100,16 +100,8 @@ package body getopt is
               internal_optopt := options (option_index);
 
               -- arg missing
-              if opterr = 1 and options (1) /= ':' then
-                raise argument_required with "option requires an argument -- " &
-                  options (option_index .. option_index);
-              end if;
-
-              if (options (1) = ':') then
-                return character'pos (':');
-              else
-                return character'pos ('?');
-              end if;
+              raise argument_required with "option requires an argument -- " &
+                options (option_index .. option_index);
             end if;
 
           else  -- current optchar matches and has no arg option
