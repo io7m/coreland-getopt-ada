@@ -124,6 +124,12 @@ package body getopt is
       character'image (internal_optopt);
   end process;
 
+  -- remaining args
+  procedure remaining (remain: out natural) is
+  begin
+    remain := cmdline.argument_count - (getopt.optind - 1);
+  end remaining;
+
 begin
   reset;
 end getopt;
