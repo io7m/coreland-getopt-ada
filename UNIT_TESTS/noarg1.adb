@@ -1,7 +1,7 @@
 with getopt;
 
 procedure noarg1 is
-  char: integer;
+  char : integer;
 begin
   char := getopt.process ("");
   if char /= getopt.opteof then

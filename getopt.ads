@@ -1,6 +1,7 @@
 package getopt is
-  function process (options: string) return integer;
-  function remaining return natural;
+  function process (options : string) return integer;
+  function argument_count return natural;
+  function argument (index: positive) return string;
 
   function optarg return string;
   function optind return positive;
@@ -12,11 +13,11 @@ package getopt is
   pragma inline (optarg);
   pragma inline (optind);
   pragma inline (optopt);
-  pragma inline (remaining);
+  pragma inline (argument_count);
 
-  opterr: integer;
-  opteof: constant integer := -1;
+  opterr : integer;
+  opteof : constant integer := -1;
 
-  argument_required: exception;
-  argument_illegal: exception;
+  argument_required : exception;
+  argument_illegal  : exception;
 end getopt;

@@ -8,8 +8,8 @@ procedure stdrun is
   package cmdline renames ada.command_line;
   package io renames ada.text_io;
 
-  char: integer;
-  optchar: character;
+  char    : integer;
+  optchar : character;
 begin
   -- print raw command line
   io.put (cmdline.command_name & " ");
@@ -44,7 +44,7 @@ begin
     end;
   end loop;
 
-  io.put_line ("-- remaining (" & natural'image (getopt.remaining) & " )");
+  io.put_line ("-- remaining (" & natural'image (getopt.argument_count) & " )");
   for index in getopt.optind .. cmdline.argument_count loop
     io.put_line ("arg " & integer'image (index) & ": " & cmdline.argument (index));
   end loop;
@@ -53,7 +53,7 @@ begin
   io.put_line ("");
 
 exception
-  when e: others =>
+  when e : others =>
     io.put_line ("fatal: " & ex.exception_name (e) & ": " & ex.exception_message (e));
     io.put_line ("");
 end stdrun;

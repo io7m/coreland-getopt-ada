@@ -6,10 +6,10 @@ package body getopt is
   package us renames ada.strings.unbounded;
 
   -- current option
-  internal_optcur: natural;
-  internal_optarg: us.unbounded_string;
-  internal_optind: positive;
-  internal_optopt: character;
+  internal_optcur : natural;
+  internal_optarg : us.unbounded_string;
+  internal_optind : positive;
+  internal_optopt : character;
 
   -- reset processing (called on elaboration)
   procedure reset is
@@ -125,10 +125,16 @@ package body getopt is
   end process;
 
   -- remaining args
-  function remaining return natural is
+  function argument_count return natural is
   begin
     return cmdline.argument_count - (getopt.optind - 1);
-  end remaining;
+  end argument_count;
+
+  -- remaining argument
+  function argument (index : positive) return string is
+  begin
+    return cmdline.argument (optind + (index - 1));
+  end argument;
 
 begin
   reset;
