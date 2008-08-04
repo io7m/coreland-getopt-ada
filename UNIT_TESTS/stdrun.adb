@@ -45,8 +45,8 @@ begin
   end loop;
 
   io.put_line ("-- remaining (" & natural'image (getopt.argument_count) & " )");
-  for index in getopt.optind .. cmdline.argument_count loop
-    io.put_line ("arg " & integer'image (index) & ": " & cmdline.argument (index));
+  for index in 1 .. getopt.argument_count loop
+    io.put_line ("arg " & integer'image (index) & ": " & getopt.argument (index));
   end loop;
 
   io.put_line ("-- end");
