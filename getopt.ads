@@ -1,4 +1,6 @@
 package getopt is
+  pragma elaborate_body (getopt);
+
   function process (options : string) return integer;
   function argument_count return natural;
   function argument (index: positive) return string;
