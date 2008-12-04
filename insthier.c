@@ -12,6 +12,8 @@ struct install_item insthier[] = {
   {INST_COPY, "getopt.ads", 0, ctxt_incdir, 0, 0, 0644},
   {INST_COPY, "getopt.adb", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "getopt.adb", 0, ctxt_incdir, 0, 0, 0644},
+  {INST_COPY, "getopt.ali", 0, ctxt_repos, 0, 0, 0644},
+  {INST_COPY, "getopt.ali", 0, ctxt_incdir, 0, 0, 0444},
   {INST_COPY, "getopt-ada.sld", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "getopt-ada.a", "libgetopt-ada.a", ctxt_slibdir, 0, 0, 0644},
   {INST_COPY, "getopt-ada-conf.ld", 0, ctxt_repos, 0, 0, 0644},
