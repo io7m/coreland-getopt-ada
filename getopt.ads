@@ -1,25 +1,32 @@
-package getopt is
-  pragma elaborate_body (getopt);
+package Getopt is
+  pragma Elaborate_Body (Getopt);
 
-  function process (options : string) return integer;
-  function argument_count return natural;
-  function argument (index: positive) return string;
+  function Process (Options : String) return Integer;
 
-  function optarg return string;
-  function optind return positive;
-  function optopt return character;
+  Argument_Required : exception;
+  Argument_Illegal  : exception;
 
-  procedure reset;
+  function Argument (index : Positive) return String;
 
-  pragma inline (reset);
-  pragma inline (optarg);
-  pragma inline (optind);
-  pragma inline (optopt);
-  pragma inline (argument_count);
+  function Argument_Count return Natural;
+  pragma Inline (Argument_Count);
 
-  opterr : integer;
-  opteof : constant integer := -1;
+  procedure Reset;
+  pragma Inline (Reset);
 
-  argument_required : exception;
-  argument_illegal  : exception;
-end getopt;
+  function optarg return String;
+  function Option_Argument return String renames optarg;
+  pragma Inline (optarg);
+
+  function optind return Positive;
+  function Option_Index return Positive renames optind;
+  pragma Inline (optind);
+
+  function optopt return Character;
+  function Option_Character return Character renames optopt;
+  pragma Inline (optopt);
+
+  Option_EOF : constant := -1;
+  opteof     : constant := Option_EOF;
+
+end Getopt;

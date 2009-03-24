@@ -1,3 +1,4 @@
 20080802 version: getopt-ada 0.1
 20081204 code: updated installer.
-20090226 code: updated installer.
+20090324 code: update to pass style checks.
+20090324 version: getopt-ada 0.2.0

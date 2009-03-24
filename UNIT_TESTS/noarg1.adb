@@ -1,10 +1,10 @@
-with getopt;
+with Getopt;
 
 procedure noarg1 is
-  char : integer;
+  char : Integer;
 begin
-  char := getopt.process ("");
-  if char /= getopt.opteof then
-    raise program_error with "expected opteof from getopt";
+  char := Getopt.Process ("");
+  if char /= Getopt.Option_EOF then
+    raise Program_Error with "expected EOF from Getopt";
   end if;
 end noarg1;
