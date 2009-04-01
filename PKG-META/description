@@ -1,0 +1,3 @@
+This library processes command line arguments in much the same way
+as <span class="code_function">getopt</span> does. The interface has been
+improved slightly to fit in with Ada programming conventions.
