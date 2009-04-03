@@ -35,13 +35,31 @@ tests:
 tests_clean:
 	(cd UNIT_TESTS && make clean)
 
+# -- SYSDEPS start
+_sysinfo.h:
+	@echo SYSDEPS sysinfo run create _sysinfo.h 
+	@(cd SYSDEPS/modules/sysinfo && ./run)
+
+
+sysinfo_clean:
+	@echo SYSDEPS sysinfo clean _sysinfo.h 
+	@(cd SYSDEPS/modules/sysinfo && ./clean)
+
+
+sysdeps_clean:\
+sysinfo_clean \
+
+
+# -- SYSDEPS end
+
+
 UNIT_TESTS/noarg1:\
 ada-bind ada-link UNIT_TESTS/noarg1.ald UNIT_TESTS/noarg1.ali getopt.ali
 	./ada-bind UNIT_TESTS/noarg1.ali
 	./ada-link UNIT_TESTS/noarg1 UNIT_TESTS/noarg1.ali
 
 UNIT_TESTS/noarg1.ali:\
-ada-compile UNIT_TESTS/noarg1.adb getopt.ads
+ada-compile UNIT_TESTS/noarg1.adb getopt.ali
 	./ada-compile UNIT_TESTS/noarg1.adb
 
 UNIT_TESTS/noarg1.o:\
@@ -53,7 +71,7 @@ ada-bind ada-link UNIT_TESTS/noarg2.ald UNIT_TESTS/noarg2.ali getopt.ali
 	./ada-link UNIT_TESTS/noarg2 UNIT_TESTS/noarg2.ali
 
 UNIT_TESTS/noarg2.ali:\
-ada-compile UNIT_TESTS/noarg2.adb getopt.ads
+ada-compile UNIT_TESTS/noarg2.adb getopt.ali
 	./ada-compile UNIT_TESTS/noarg2.adb
 
 UNIT_TESTS/noarg2.o:\
@@ -65,7 +83,7 @@ ada-bind ada-link UNIT_TESTS/stdrun.ald UNIT_TESTS/stdrun.ali getopt.ali
 	./ada-link UNIT_TESTS/stdrun UNIT_TESTS/stdrun.ali
 
 UNIT_TESTS/stdrun.ali:\
-ada-compile UNIT_TESTS/stdrun.adb getopt.ads
+ada-compile UNIT_TESTS/stdrun.adb getopt.ali
 	./ada-compile UNIT_TESTS/stdrun.adb
 
 UNIT_TESTS/stdrun.o:\
@@ -188,7 +206,7 @@ cc-link getopt-ada-conf.ld getopt-ada-conf.o ctxt/ctxt.a
 	./cc-link getopt-ada-conf getopt-ada-conf.o ctxt/ctxt.a
 
 getopt-ada-conf.o:\
-cc-compile getopt-ada-conf.c ctxt.h
+cc-compile getopt-ada-conf.c ctxt.h _sysinfo.h
 	./cc-compile getopt-ada-conf.c
 
 getopt-ada.a:\
@@ -269,7 +287,7 @@ conf-systype
 mk-systype:\
 conf-cc conf-ld
 
-clean-all: tests_clean obj_clean ext_clean
+clean-all: sysdeps_clean tests_clean obj_clean ext_clean
 clean: obj_clean
 obj_clean:
 	rm -f UNIT_TESTS/noarg1 UNIT_TESTS/noarg1.ali UNIT_TESTS/noarg1.o \
